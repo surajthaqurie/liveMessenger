@@ -19,8 +19,10 @@ const Chat = ({ location }) => {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
 
-
     const ENDPOINT = 'localhost:5000';
+
+    // This is heroku endpoit of server delopyment
+    // const ENDPOINT = 'https://live-messanger.herokuapp.com/'    
 
     useEffect(() => {
         const { name, room } = queryString.parse(location.search);
