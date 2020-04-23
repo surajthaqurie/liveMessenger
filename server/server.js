@@ -38,6 +38,13 @@ io.on('connection', (socket) => {
 
         socket.join(user.room);
 
+        io.to(user.room).emit('roomData',
+            {
+                room: user.room,
+                users: getUserInRoom(user.room)
+            });
+
+
         callback();
     });
 
@@ -51,13 +58,28 @@ io.on('connection', (socket) => {
             text: message
         });
 
+        io.to(user.room).emit('roomData', {
+            room: user.room,
+            users: getUserInRoom(user.room)
+        });
         callback();
     });
 
 
     // Basic disconnect Event
     socket.on('disconnect', () => {
-        console.log('User had left!!!');
+        // console.log('User had left!!!');
+        const user = removeUser(socket.id);
+
+        if (user) {
+
+            // Message if Use refresh or leave
+            io.to(user.room).emit('message', {
+                user: 'admin',
+                text: `${user.name} has left.`
+            });
+        }
+
     });
 });
 
