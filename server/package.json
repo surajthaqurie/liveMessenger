@@ -4,7 +4,7 @@
   "description": "this project is chatting app with node socket.io react",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Suraj Chand",
