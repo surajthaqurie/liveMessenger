@@ -5,6 +5,7 @@ import io from 'socket.io-client';
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 import Messages from '../Messages/Messages';
+import TextContainer from '../TextContainer/TextContainer';
 
 import './Chat.css';
 
@@ -14,6 +15,7 @@ const Chat = ({ location }) => {
     // Declaring Hooks: Here `name` is State and `setName` is Function and passing it an empty string of initial value for name state
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
+    const [users, setUser] = useState('');
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
 
@@ -51,8 +53,16 @@ const Chat = ({ location }) => {
     useEffect(() => {
         socket.on('message', (message) => {
             setMessages([...messages, message]);
+
+            // setMessage(messages => [...messages, message]);
         });
+
+        // socket.on("roomData", ({ users }) => {
+        //     setUser(users);
+        // });
+
     }, [messages]);
+
 
     // Function for sending Messages
     const sendMessage = (event) => {
@@ -76,8 +86,8 @@ const Chat = ({ location }) => {
                     setMessage={setMessage}
                     sendMessage={sendMessage}
                 />
-
             </div>
+            <TextContainer users={users} />
         </div>
     );
 }
