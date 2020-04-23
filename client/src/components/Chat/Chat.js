@@ -16,11 +16,16 @@ const Chat = ({ location }) => {
         // console.log(location.search); --> ?name=asda&room=asdas
 
         socket = io(ENDPOINT);
+        // console.log(socket);
 
         setName(name);
         setRoom(room);
 
-        console.log(socket);
+        // From Forntend Meet Different Events Using This Specific Intance Of A Socket
+        socket.emit('join', { name, room }, ({ error }) => {
+            alert(error);
+        });
+
 
     }, [ENDPOINT, location.search]);
     return (
