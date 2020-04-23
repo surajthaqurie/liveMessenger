@@ -22,10 +22,18 @@ const Chat = ({ location }) => {
         setRoom(room);
 
         // From Forntend Meet Different Events Using This Specific Intance Of A Socket
-        socket.emit('join', { name, room }, ({ error }) => {
-            alert(error);
+        socket.emit('join', { name, room }, () => {
+
         });
 
+        // Simply How useEffect works 
+        return () => {
+            // Emit same Disconnect same as Server when this happens and this happening on unmounting of components
+            socket.emit('disconnect');
+
+            // It will actually trun this this one intance of a client socket(One chat person it is going to turn it off)
+            socket.off();
+        }
 
     }, [ENDPOINT, location.search]);
     return (
