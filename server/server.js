@@ -26,13 +26,14 @@ io.on('connection', (socket) => {
         // Sending  admin Amin generated message when user join
         socket.emit('message', {
             user: 'admin',
-            text: `${user.name}, Welcome to the room ${user.room}`
+            text: `${user.name}, welcome to room ${user.room}.`
         });
+
 
         // broadcast does it is going to send a message to everyone besides that user
         socket.broadcast.to(user.room).emit('message', {
             user: 'admin',
-            text: `${user.name}, has joined`
+            text: `${user.name}, has joined!`
         });
 
         socket.join(user.room);
@@ -44,6 +45,7 @@ io.on('connection', (socket) => {
     socket.on('sendMessage', (message, callback) => {
         const user = getUser(socket.id);
 
+        // this message is comes form Forntend
         io.to(user.room).emit('message', {
             user: user.name,
             text: message
