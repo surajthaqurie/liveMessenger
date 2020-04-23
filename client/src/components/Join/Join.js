@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import './Join.css';
+
 const Join = () => {
 
     // Declaring Hooks: Here `name` is State and `setName` is Function and passing it an empty string of initial value for name state
