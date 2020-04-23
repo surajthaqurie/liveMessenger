@@ -1,0 +1,5 @@
+.vscode/
+
+// ignore the all node_modules folder from anywhere
+**/node_modules
+**/package-lock.json
