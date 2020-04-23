@@ -12,7 +12,7 @@ Setup:
 
 
 ### For testing:
-[CLick Here](https://5ea1ee6a2fae12024dfd3581--flamboyant-blackwell-e4ed42.netlify.app/).
+[CLick Here](https://sleepy-lichterman-c2ffe9.netlify.app/).
 - Heroku is used for deploy Server.
   - First install heroku cli in system and then login to heroku run ```heroku login```.
   - Then Heroku works similar to Git commend. In push comment ``` git push heroku master```.
