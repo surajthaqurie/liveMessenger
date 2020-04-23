@@ -15,9 +15,9 @@ Setup:
 [CLick Here](https://5ea1ee6a2fae12024dfd3581--flamboyant-blackwell-e4ed42.netlify.app/).
 - Heroku is used for deploy Server.
   - First install heroku cli in system and then login to heroku run ```heroku login```.
-  -  THen Heroku works similar to Git commend. In push comment ``` git push heroku master```.
+  - Then Heroku works similar to Git commend. In push comment ``` git push heroku master```.
 - Netlify is used For deploy client. For deployment on Netlify:
- - First install netlify cli in system and then login to heroku run ```netlify login```.
- - In client we have to give heroku deploy domain instead of Localhost.
- - Then bulid the project  run ```npm run build```.
- - Then run ```netlify deploy```. It ask for Published directory ./bulid (give path of builded directory.
+   - First install netlify cli in system and then login to heroku run ```netlify login```.
+  - In client we have to give heroku deploy domain instead of Localhost.
+  - Then bulid the project  run ```npm run build```.
+  - Then run ```netlify deploy```. It ask for Published directory ./bulid (give path of builded directory).
