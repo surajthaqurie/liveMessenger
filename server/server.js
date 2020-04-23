@@ -9,15 +9,51 @@ const server = http.createServer(app);
 // Instance of the socket.io of Server
 const io = socketio(server);
 
+const { addUser, removeUser, getUser, getUserInRoom } = require('./lib/controllers/users/users');
+
 io.on('connection', (socket) => {
-    console.log('We have a new Connection!!!');
+    // console.log('We have a new Connection!!!');
 
+
+    // socket with callback function
     socket.on('join', ({ name, room }, callback) => {
-        console.log(name, room);
+        // console.log(name, room);
 
-        
+        const { error, user } = addUser({ id: socket.id, name, room });
+
+        if (error) return callback(error);
+
+        // Sending  admin Amin generated message when user join
+        socket.emit('message', {
+            user: 'admin',
+            text: `${user.name}, Welcome to the room ${user.room}`
+        });
+
+        // broadcast does it is going to send a message to everyone besides that user
+        socket.broadcast.to(user.room).emit('message', {
+            user: 'admin',
+            text: `${user.name}, has joined`
+        });
+
+        socket.join(user.room);
+
+        callback();
     });
- // Basic disconnect Event
+
+    // Event for user generated messages
+    socket.on('sendMessage', (message, callback) => {
+        const user = getUser(socket.id);
+
+        io.to(user.room).emit('message', {
+            user: user.name,
+            text: message
+        });
+
+        callback();
+    });
+
+
+    // Basic disconnect Event
     socket.on('disconnect', () => {
         console.log('User had left!!!');
     });
