@@ -10,11 +10,8 @@ By the end of this video, you will have a strong understanding of how to send an
 Setup:
 - run ```npm i && npm start``` for both client and server side to start the development server
 
-
-### For testing:
-[CLick Here](https://sleepy-lichterman-c2ffe9.netlify.app/).
 - Heroku is used for deploy Server.
-  - First install heroku cli in system and then login to heroku run ```heroku login```.
+  - First install heroku cli in system and create project in heroku (similar as gi)then login to heroku run ```heroku login```.
   - Then Heroku works similar to Git commend. In push comment ``` git push heroku master```.
 - Netlify is used For deploy client. For deployment on Netlify:
    - First install netlify cli in system and then login to heroku run ```netlify login```.
